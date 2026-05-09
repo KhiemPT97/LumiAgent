@@ -18,8 +18,9 @@ async def main():
     bot = Bot(token=config.TELEGRAM_BOT_TOKEN)
     dp = Dispatcher()
 
-    # Register routers
+    from bot.handlers import common, chat, commands
     dp.include_router(common.router)
+    dp.include_router(commands.router)
     dp.include_router(chat.router)
 
     # Start polling
